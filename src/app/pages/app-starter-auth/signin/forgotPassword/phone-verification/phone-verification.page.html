@@ -1,0 +1,91 @@
+<ion-content>
+  <form [formGroup]="signupForm">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="back-btn" style="border-bottom: 2px solid var(--ion-color-light);">
+        <ion-col>
+          <div>
+            <ion-buttons slot="start">
+              <ion-button
+              [routerLink]="['/','app-starter-auth']"
+              >
+                <ion-icon
+                size="small"
+                name="arrow-back-outline"
+              ></ion-icon>
+              </ion-button>
+              Forgot Password
+            </ion-buttons>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="progress" *ngIf="loading">
+        <ion-col class="ion-no-padding">
+          <ion-progress-bar type="indeterminate"></ion-progress-bar>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-padding heading">
+        <ion-col>
+          <h4>Get started</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-padding input">
+        <ion-col>
+          <h6>We sent a 4-digit code to +92 {{phoneNumber}}.</h6>
+          <h6 class="ion-padding-bottom ion-no-margin">Enter it here.</h6>
+          <ion-item class="item">
+            <ion-input
+              class="input"
+              clearInput
+              autofocus="true"
+              type="number"
+              formControlName="code"
+              [(ngModel)]="code"
+              placeholder="0000"
+            ></ion-input>
+          </ion-item>
+          <div class="alert alert-danger ion-padding-bottom" *ngIf="formSubmit && !verificationCode.valid">
+            <div *ngIf="verificationCode.errors.required ||
+                        verificationCode.errors.min ||
+                        verificationCode.errors.max">
+                        This verification code is invalid
+            </div>
+            <div *ngIf="verificationCode.errors.invalid">
+                        Invalid Verification Code
+            </div>
+          </div>
+          <div class="alert alert-danger ion-padding-bottom" *ngIf="maxAttempts && !verificationCode.valid">
+            <div *ngIf="verificationCode.errors.maxAttempts">Max Attempts reached. Please try again later!</div>
+          </div>
+          <div class="alert alert-success ion-padding-bottom" *ngIf="resendStatus">
+            <div>Code Resent Successfully</div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-padding resend-otp">
+        <ion-col>
+          <h6
+          class="link"
+          (click)="resendCode()"
+          ><a>Resend OTP</a></h6>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="btn-submit">
+        <ion-col>
+          <ion-button
+            color="primary"
+            type="submit"
+            expand="full"
+            (click)="verifyCode()"
+          >
+            Next
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

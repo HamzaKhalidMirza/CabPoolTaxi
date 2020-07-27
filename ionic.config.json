@@ -1,5 +1,7 @@
 {
   "name": "CabPoolTaxi",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,82 @@
+<ion-content>
+  <form [formGroup]="loginForm">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="back-btn" style="border-bottom: 2px solid var(--ion-color-light);">
+        <ion-col>
+          <div>
+            <ion-buttons slot="start">
+              <ion-button
+              [routerLink]="['/','app-starter-auth']"
+              >
+                <ion-icon
+                size="small"
+                name="arrow-back-outline"
+              ></ion-icon>
+              </ion-button>
+              Sign In
+            </ion-buttons>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="progress" *ngIf="loading">
+        <ion-col class="ion-no-padding">
+          <ion-progress-bar type="indeterminate"></ion-progress-bar>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-padding heading">
+        <ion-col>
+          <h4>Get started</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-padding input">
+        <ion-col>
+          <h6>Enter your phone number (required)</h6>
+          <ion-item class="item">
+            <ion-label #countryCode>+92</ion-label>
+            <ion-input
+              class="input"
+              clearInput
+              autofocus="true"
+              type="number"
+              formControlName="phone"
+              [(ngModel)]="phone"
+            ></ion-input>
+          </ion-item>
+          <div
+            class="alert alert-danger"
+            *ngIf="formSubmit && !phoneNumber.valid"
+          >
+            <div *ngIf="phoneNumber.errors.required">
+              This phone number is invalid
+            </div>
+            <div *ngIf="(phoneNumber.errors.min || phoneNumber.errors.max)">
+              This phone number is invalid
+            </div>
+            <div *ngIf="phoneNumber.errors.pattern">
+              Phone Number doesn't match the pattern.
+            </div>
+            <div *ngIf="phoneNumber.errors.notFound">
+              This phone number not exits
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="btn-submit">
+        <ion-col>
+          <ion-button
+            color="primary"
+            type="submit"
+            expand="full"
+            (click)="phoneNoVerification()"
+          >
+            Next
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

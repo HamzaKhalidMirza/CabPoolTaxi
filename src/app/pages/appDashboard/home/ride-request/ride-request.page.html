@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>        
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color: var(--ion-color-primary);">Request Ride</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="caption">
+      <ion-col size="12">
+        <p>So how many seats<br>you wanna reserved?</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="seats-container">
+      <ion-col offset="2" size="2" class="icon"><h1 (click)="decrementSeat()">-</h1></ion-col>
+      <ion-col offset="1" size="2"><h1>{{seatsCounter}}</h1></ion-col>
+      <ion-col offset="1" size="2" class="icon"><h1 (click)="incrementSeat()">+</h1></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">View Note</ion-label>
+          <ion-textarea rows="5" 
+            [(ngModel)]="viewNote"
+            style="border-bottom: 1px solid var(--ion-color-primary);"></ion-textarea>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid
+    class="ion-no-padding ion-no-margin"
+    style="position: fixed; left: 10px; right: 10px; bottom: 15px; z-index: 1;"
+  >
+    <ion-row>
+      <ion-col size="12">
+        <ion-button
+          expand="block"
+          style="height: 50px; margin: 0;"
+          (click)="continue()"
+          >Request Ride</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

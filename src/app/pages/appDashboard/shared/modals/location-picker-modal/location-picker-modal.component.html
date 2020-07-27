@@ -1,0 +1,133 @@
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row
+      class="back-btn"
+    >
+      <ion-col>
+        <div>
+          <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+              <ion-icon size="small" name="arrow-back-outline"></ion-icon>
+            </ion-button>
+            {{titleCaption}} Location
+          </ion-buttons>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="location-inputs">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="input-row">
+        <ion-col size="12">
+          <div class="input-container">
+            <ion-item lines="none" color="light">
+              <span class="circle"></span>
+              <span class="circle-back"></span>
+              <ion-input
+                [value]="[selectedLocation?.caption]"
+                (ionInput)="onSearchLocation($event.target.value)"
+                (ionFocus)="onFocus($event.target.value)"
+                (ionBlur)="onBlur()"
+                [placeholder]="titleCaption"
+                type="text"
+                #inputEl
+                autofocus="true"
+              >
+              </ion-input>
+              <div
+                class="edit-icon-container edit-icon icon-container"
+                #editIcon
+              >
+                <ion-icon
+                  name="pencil-outline"
+                  slot="end"
+                  class="edit-icon"
+                ></ion-icon>
+              </div>
+              <div
+                class="close-icon-container close-icon icon-container"
+                #closeIcon
+              >
+                <ion-icon
+                  name="close-outline"
+                  slot="end"
+                  size="large"
+                  (click)="closeLocationField()"
+                ></ion-icon>
+              </div>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="locations-list" *ngIf="!mapAdjustment">
+    <ion-grid class="ion-no-padding">
+      <div *ngIf="mapAdjustmentIcons">
+        <ion-row class="current-location">
+          <ion-col>
+            <ion-item lines="none" (click)="setCurrentLocation()">
+              <ion-icon
+                name="locate-sharp"
+                size="large"
+                slot="start"
+              ></ion-icon>
+              <ion-label>Current Location</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="map-adjust">
+          <ion-col>
+            <ion-item lines="none" (click)="openLocationMapContainer()">
+              <ion-icon name="pin-sharp" size="large" slot="start"></ion-icon>
+              <ion-label>Adjust on Map</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-row class="progress" *ngIf="loading">
+        <ion-col class="spinner">
+          <ion-spinner color="primary" name="crescent"></ion-spinner>
+        </ion-col>
+      </ion-row>
+
+      <ion-row
+      *ngFor="let sLocation of locationItems"
+      (click)="onSelectionLocation(sLocation)"
+      >
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon
+              name="location-outline"
+              slot="start"
+              size="large"
+            ></ion-icon>
+            <div class="address">
+              <ion-label class="main-text">
+                {{ sLocation?.structured_formatting.main_text }}
+              </ion-label>
+              <ion-label class="secondary-text">
+                {{ sLocation?.structured_formatting.secondary_text }}
+              </ion-label>
+            </div>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="map-container" *ngIf="mapAdjustment">
+    <app-location-picker-map
+      [center]="currentLocation"
+      [titleCaption]="titleCaption"
+      (confirmLocationEmitted)="captureConfirmation()"
+      (centerEmitted)="captureLocationFromMap($event)"
+    ></app-location-picker-map>
+  </div>
+
+
+</ion-content>

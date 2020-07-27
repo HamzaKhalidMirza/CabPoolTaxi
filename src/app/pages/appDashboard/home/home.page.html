@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color: var(--ion-color-primary);">Find Ride</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="container">
+    <div class="map-container">
+      <div class="map" #map></div>
+    </div>
+    <form [formGroup]="tripBookingForm">
+      <div class="form-container">
+        <ion-row class="input-row">
+          <ion-col size="12">
+            <ion-item lines="none" (click)="pickupLocation()">
+              <ion-label *ngIf="!startLocation">Pickup</ion-label>
+              <ion-label *ngIf="startLocation">Pickup: {{startLocation?.address}}</ion-label>
+              <ion-icon name="location-outline" slot="end"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="input-row">
+          <ion-col size="12">
+            <ion-item lines="none" (click)="dropoffLocation()">
+              <ion-label *ngIf="!endLocation">Dropoff</ion-label>
+              <ion-label *ngIf="endLocation">Dropoff: {{endLocation?.address}}</ion-label>
+              <ion-icon name="location-outline"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="full"
+              [disabled]="!tripBookingForm.valid"
+              (click)="bookRide()"
+            >Book Ride</ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </form>
+  </section>
+</ion-content>

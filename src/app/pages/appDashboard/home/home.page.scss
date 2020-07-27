@@ -1,0 +1,50 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  
+    .map {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    
+      background-color: transparent;
+    
+      opacity: 0;
+      transition: opacity 300ms ease-in;
+    }
+    
+    .map.visible {
+      opacity: 1;
+    }
+
+    .form-container {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+
+      ion-row {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        ion-label {
+          font-size: 0.8rem;
+        }
+        ion-button {
+          height: 45px;
+        }
+      }
+      .input-row {
+        margin-left: 13px;
+        margin-right: 13px;
+        background-color: #fff;
+        border: 1px solid #bbb;
+        margin-bottom: 10px;
+      }
+      ion-col {
+        padding: 0;
+      }
+    }
+    
+  }
+  

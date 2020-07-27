@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-button
+      *ngIf="selectedStartLoc && selectedEndLoc"
+      class="btn-reset"
+      slot="end"
+      color="primary"
+      (click)="resetLocations()"
+    >Reset</ion-button>
+    <ion-title style="color: var(--ion-color-primary);"
+      >Select Locations</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="caption">
+      <ion-col size="12">
+        <p>Select Start and Destination Locations</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div class="divider"></div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="selectedStartLoc && selectedEndLoc">
+      <ion-col size="12">
+        <div class="address-container">
+          <div class="location">
+            <p>
+              <span class="circleFrom"></span>
+              <span class="circleFrom-back"></span>
+              <span class="caption"><strong>Start:</strong> {{selectedStartLoc?.location?.address}}</span>
+            </p>
+          </div>
+          <div class="location">
+            <p>
+              <span class="circleWhere"></span>
+              <span class="circleWhere-back"></span>
+              <span class="caption"><strong>End:</strong> {{selectedEndLoc?.location?.address}}</span>
+            </p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item lines="full" *ngIf="!selectedStartLoc">
+      <ion-label>Select Start Location</ion-label>
+      <ion-icon slot="start" color="primary" name="location-outline"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" *ngIf="!selectedEndLoc && selectedStartLoc">
+      <ion-label>Select End Location</ion-label>
+      <ion-icon slot="start" color="primary" name="location-outline"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" *ngFor="let location of locationList">
+      <ion-checkbox
+        slot="start"
+        color="primary"
+        [disabled]="location.disabled"
+        [(ngModel)]="location.isChecked"
+        (ionChange)="choiceChanged(location)"
+      ></ion-checkbox>
+      <ion-label>{{location?.location?.address}}</ion-label>
+    </ion-item>
+  </ion-list>
+  
+  <ion-grid
+    class="ion-no-padding ion-no-margin"
+    style="position: fixed; left: 10px; right: 10px; bottom: 15px; z-index: 1;"
+  >
+    <ion-row>
+      <ion-col size="12">
+        <ion-button
+          [disabled]="!selectedStartLoc || !selectedEndLoc"
+          expand="block"
+          style="height: 50px; margin: 0;"
+          (click)="continue()"
+          >Continue</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

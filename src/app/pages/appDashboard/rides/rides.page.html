@@ -1,0 +1,211 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color: var(--ion-color-primary);">My Rides</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid
+    *ngIf="!isLoading && (!relevantTrips || relevantTrips.length <= 0)"
+    style="position: fixed; top: 40%; left: 35%;"
+  >
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <p>No Trips Found!</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-no-padding"
+    *ngIf="!isLoading && relevantTrips.length > 0"
+  >
+    <ion-row class="list" *ngFor="let trip of relevantTrips"
+      [routerLink]="['/tabs/rides',trip?.trip?.id]"
+    >
+      <ion-col size="12">
+        <div class="header-container">
+          <div class="img-container">
+            <div class="image">
+              <ion-avatar>
+                <ion-img
+                src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1
+              .2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                ></ion-img>
+              </ion-avatar>  
+            </div>
+          </div>
+          <div class="caption-container">
+            <p class="name">{{trip?.driver?.email}}</p>
+            <p>{{trip?.trip?.vehicle?.modelName}}</p>
+          </div>
+          <div class="date-container">
+            <p>{{ getTripDate(trip?.trip?.startDate) }}</p>
+          </div>  
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <div class="address-container">
+          <div class="location">
+            <p>
+              <span class="circleFrom"></span>
+              <span class="circleFrom-back"></span>
+              <span class="caption">{{trip?.trip?.startLocation?.address}}</span>
+            </p>
+          </div>
+          <div class="location">
+            <p>
+              <span class="circleWhere"></span>
+              <span class="circleWhere-back"></span>
+              <span class="caption">{{trip?.trip?.endLocation?.address}}</span>
+            </p>
+          </div>
+          <div class="location">
+            <p style="font-weight: 600; margin-bottom: 0;">
+              {{ getTripDayName(trip?.trip?.startDate, "en-US") }} at 
+              {{ getTripTime(trip?.trip?.startTime) }}
+            </p>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <div class="overview-container">
+          <div class="overview">
+            <p>
+              <span class="seats">{{trip?.trip?.seatsAvailable}}-Seats</span>
+              <span class="car">{{trip?.trip?.vehicle?.ac}}</span>
+            </p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    
+  <div *ngIf="isLoading">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

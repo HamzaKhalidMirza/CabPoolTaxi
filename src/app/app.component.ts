@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from 'src/common/sdk/core/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,45 +10,54 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public selectedIndex = 0;
-  public appPages = [
+
+  currentUser: any;
+  public appMainPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Your Trips',
+      url: '/rides',
+      icon: 'car-sport'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Wallet',
+      url: '/wallet',
+      icon: 'cash'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
-    },
-    {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
-    },
-    {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Get discounts',
+      url: '/discount',
+      icon: 'shield-checkmark'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public appAccountPages = [
+    {
+      title: 'Settings',
+      url: '/setting',
+      icon: 'settings'
+    },
+    {
+      title: 'Help',
+      url: '/help',
+      icon: 'help-circle'
+    },
+    {
+      title: 'Sign Out',
+      url: '/app-starter-auth',
+      icon: 'log-out'
+    }
+  ];
+
+  public legalPage = {
+    title: 'Legal',
+    url: '/legal',
+    version: 'v1.0.0'
+  };
 
   constructor(
     private platform: Platform,
+    private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private authService: AuthService
   ) {
     this.initializeApp();
   }
@@ -60,10 +69,13 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
+  async ngOnInit() {
+    this.currentUser = await this.authService.getCurrentUser();
+  }
+
+  logout(page) {
+    if (page.title === 'Sign Out') {
+      this.authService.logout();
     }
   }
 }
