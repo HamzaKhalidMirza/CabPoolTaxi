@@ -78,6 +78,7 @@ export class SignupPage implements OnInit {
           this.router.navigateByUrl('/app-starter-auth/signup/phone-verification');
         },
         (error: AppError) => {
+          console.log(error);
           this.loading = false;
           if (error instanceof BadInput) {
             if (error.originalError.error.message === 'Phone Number already exits!') {

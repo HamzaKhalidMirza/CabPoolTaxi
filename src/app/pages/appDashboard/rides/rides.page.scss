@@ -76,24 +76,16 @@ ion-row.list {
       }
     }
 
-    .overview-container {
-      width: 100%;
-      height: auto;
-
-      .overview {
-        p {
-          margin: 0;
-
-          span {
-            display: inline-block;
-            margin-left: 30px;
-          }
-          span.seats {
-            margin-left: 10px;
-          }
-        }
-      }
+    .overview {
+      font-size: 0.8rem;
     }
+    .status {
+      background: var(--ion-color-primary);
+      color: #fff;
+      padding: 5px;
+      border-radius: 10px;
+    }
+
   }
 }
 

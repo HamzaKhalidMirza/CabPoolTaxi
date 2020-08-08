@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="header">
+      <div class="header-img">
+        <ion-avatar>
+          <ion-img
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1
+.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          ></ion-img>
+        </ion-avatar>
+      </div>
+      <div class="title">
+        <ion-title>Hamza Khalid</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #ionContent>
+  <div class="chat-page">
+    <div class="msg-inbox">
+      <div class="chats">
+        <div class="msg-page">
+          <div *ngFor="let message of chatMessagesList">
+            <div class="received-chats" *ngIf="message.senderRole === 'driver'">
+              <div class="received-chats-img">
+                <ion-avatar>
+                  <ion-img
+                    src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1
+    .2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  ></ion-img>
+                </ion-avatar>
+              </div>
+              <div class="received-msg">
+                <div class="recieved-msg-inbox">
+                  <p>{{message?.message}}</p>
+                  <span class="time">{{setDateAndTime(message?.createdAt)}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="outgoing-chats" *ngIf="message.senderRole === 'client'">
+              <div class="outgoing-chats-msg">
+                <p>{{message?.message}}</p>
+                <span class="time">{{setDateAndTime(message?.createdAt)}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <form [formGroup]="chatForm">
+    <div class="msg-bottom">
+      <div class="input-group">
+        <ion-input
+          type="text"
+          class="form-control"
+          placeholder="Write message here..."
+          formControlName="message"
+        ></ion-input>
+        <span class="input-group-text" (click)="sendMessage()">
+          <ion-icon name="navigate-sharp" color="primary"></ion-icon>
+        </span>
+      </div>
+    </div>  
+  </form>
+</ion-footer>

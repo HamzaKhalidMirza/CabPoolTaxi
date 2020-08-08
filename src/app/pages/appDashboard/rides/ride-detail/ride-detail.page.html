@@ -5,6 +5,10 @@
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <ion-button color="primary" slot="end" class="chat-btn"
+      (click)="openChatRoom(loadedTrip)">
+      <ion-icon name="chatbox-ellipses-sharp"></ion-icon>
+    </ion-button>
     <ion-title style="color: var(--ion-color-primary);">Ride Detail</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -30,7 +34,7 @@
           ></ion-img>
         </ion-thumbnail>
         <ion-label>
-          <p style="font-weight: 600; font-size: 1rem;">{{driver?.email}}</p>
+          <p style="font-weight: 600; font-size: 1rem;">{{driver?.username}}</p>
           <p>{{vehicle?.modelName}}</p>
         </ion-label>
       </ion-item>
@@ -83,36 +87,46 @@
     <div>
       <h4>Booking Details</h4>
     </div>
-    <div class="booking-container" *ngFor="let booking of bookingTrips">
-      <ion-card style="box-shadow: none !important;">
-        <ion-card-header>
-          <ion-avatar style="float: left;">
-            <ion-img
-            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1
-        .2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-          ></ion-img>
-          </ion-avatar>
-          <ion-label style="float: left; margin: 10px;">
-            <p style="font-weight: 600; font-size: 1rem;">{{booking?.client.username}}</p>
-            <p>Seats Reserved: {{booking?.seatsReserved}}</p>
-          </ion-label>
-      </ion-card-header>
-      <ion-card-content style="clear: both;">
-        <div class="container booking-location">
-          <p class="location">
-            <span class="circleFrom"></span>
-            <span class="circleFrom-back"></span>
-            <span class="caption">{{booking?.startLocation?.address}}</span>
-          </p>
-          <p class="location">
-            <span class="circleWhere"></span>
-            <span class="circleWhere-back"></span>
-            <span class="caption">{{booking?.endLocation?.address}}</span>
-          </p>
-        </div>
-      </ion-card-content>
-      </ion-card>
-  </div>
+    <ion-card style="box-shadow: none !important; margin: 0;">
+      <ion-row class="list" *ngFor="let booking of bookingTrips">
+        <ion-col size="12">
+          <div class="header-container">
+            <div class="img-container">
+              <div class="image">
+                <ion-avatar>
+                  <ion-img
+                    src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1
+            .2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  ></ion-img>
+                </ion-avatar>
+              </div>
+            </div>
+            <div class="caption-container">
+              <p class="name">{{booking?.client?.username}}</p>
+              <p>Seats Reserved: {{booking?.seatsReserved}}</p>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <div class="address-container">
+            <div class="location">
+              <p>
+                <span class="circleFrom"></span>
+                <span class="circleFrom-back"></span>
+                <span class="caption">{{booking?.startLocation?.address}}</span>
+              </p>
+            </div>
+            <div class="location">
+              <p>
+                <span class="circleWhere"></span>
+                <span class="circleWhere-back"></span>
+                <span class="caption">{{booking?.endLocation?.address}}</span>
+              </p>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
   </div>
 
   <div *ngIf="isLoading">

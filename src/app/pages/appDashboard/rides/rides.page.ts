@@ -32,7 +32,7 @@ export class RidesPage implements OnInit {
         this.loadedTrips = response.data.data;
         console.log(this.loadedTrips);
         this.relevantTrips = this.loadedTrips.filter(
-          (trip) => trip.status === "upcoming"
+          (trip) => trip.status === "upcoming" || trip.status === "current"
         );
         console.log("CO-Trips", this.relevantTrips);
       },

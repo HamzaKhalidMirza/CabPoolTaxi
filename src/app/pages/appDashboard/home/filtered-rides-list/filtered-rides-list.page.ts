@@ -52,7 +52,7 @@ export class FilteredRidesListPage implements OnInit {
           this.loadedTrips = response.data.data;
           console.log(this.loadedTrips);
           this.relevantTrips = this.loadedTrips.filter(
-            (trip) => trip.status === "upcoming"
+            (trip) => trip.status === "upcoming" && trip.seatsAvailable > 0
           );
           console.log("CO-Trips", this.relevantTrips);
         },

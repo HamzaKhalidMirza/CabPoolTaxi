@@ -1,4 +1,4 @@
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   Component,
   OnInit,
@@ -13,6 +13,7 @@ import { BadInput } from "src/common/error/bad-input";
 import { NotFoundError } from "src/common/error/not-found-error";
 import { UnAuthorized } from "src/common/error/unauthorized-error";
 import { BaseMapService } from "src/common/sdk/custom/maps/baseMap.service";
+import { AuthService } from 'src/common/sdk/core/auth.service';
 
 @Component({
   selector: "app-ride-detail",
@@ -36,7 +37,9 @@ export class RideDetailPage implements OnInit {
     private tripService: TripService,
     private renderer: Renderer2,
     private baseMapService: BaseMapService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -172,6 +175,14 @@ export class RideDetailPage implements OnInit {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  async openChatRoom(trip) {
+
+    await this.authService.clearFieldDataFromStorage('chat-driverData');
+    await this.authService.setFieldDataToStorage('chat-driverData', trip.driver);
+
+    this.router.navigateByUrl('chat-room');
   }
 
   getTripDayName(dateStr, locale) {

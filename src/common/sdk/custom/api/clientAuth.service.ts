@@ -20,7 +20,7 @@ export class ClientAuthService {
   ) { }
 
   public checkPhoneExistance(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/checkPhoneExistance';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/checkPhoneExistance';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -30,7 +30,7 @@ export class ClientAuthService {
   }
 
   public getVerificationCode(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/getVerificationCode';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/getVerificationCode';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -40,7 +40,7 @@ export class ClientAuthService {
   }
 
   public verifyCode(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/verifyCode';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/verifyCode';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -50,7 +50,7 @@ export class ClientAuthService {
   }
 
   public checkEmailExistance(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/checkEmailExistance';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/checkEmailExistance';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -60,7 +60,7 @@ export class ClientAuthService {
   }
 
   public registerClient(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/signup';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/signup';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -70,7 +70,7 @@ export class ClientAuthService {
   }
 
   public verifyPhoneExistance(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/verifyPhoneExistance';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/verifyPhoneExistance';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -80,7 +80,7 @@ export class ClientAuthService {
   }
 
   public loginClient(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/login';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/login';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -90,7 +90,7 @@ export class ClientAuthService {
   }
 
   public forgotPassword(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/forgotPassword';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/forgotPassword';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -100,7 +100,7 @@ export class ClientAuthService {
   }
 
   public verifyForgotPasswordCode(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/verifyForgotPasswordCode';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/verifyForgotPasswordCode';
 
     return this.http.post(url, credentials)
     .pipe(
@@ -110,7 +110,7 @@ export class ClientAuthService {
   }
 
   public resetPassword(credentials: object): Observable<any> {
-    const url = ClientAppConfig.getLocalPath() + '/api/v1/clients/resetPassword';
+    const url = ClientAppConfig.getHostPath() + '/api/v1/clients/resetPassword';
 
     return this.http.patch(url, credentials)
     .pipe(

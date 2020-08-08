@@ -57,6 +57,11 @@ ion-row.list {
           text-align: end;
         }
       }
+      
+      .chat-btn {
+        --border-radius: 15px;
+        float: right;
+      }
     }
 
     .address-container {

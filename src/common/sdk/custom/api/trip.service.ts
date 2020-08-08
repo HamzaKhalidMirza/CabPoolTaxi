@@ -23,7 +23,7 @@ export class TripService {
 
   public async searchTripsWithinLocation(credentials: object | any) {
     const token = await this.authService.getTokenFromStorage();
-    const url = ClientAppConfig.getLocalPath() + 
+    const url = ClientAppConfig.getHostPath() + 
                 `/api/v1/trips/trips-within` +
                 `/start-loc/${credentials.startLoc.coordinates[0]},${credentials.startLoc.coordinates[1]}` +
                 `/end-loc/${credentials.endLoc.coordinates[0]},${credentials.endLoc.coordinates[1]}`;
@@ -39,7 +39,7 @@ export class TripService {
 
   public async getSingleTrip(credentials) {
     const token = await this.authService.getTokenFromStorage();
-    const url = ClientAppConfig.getLocalPath() + `/api/v1/trips/${credentials.tripId}`;
+    const url = ClientAppConfig.getHostPath() + `/api/v1/trips/${credentials.tripId}`;
 
     return this.http.get(url, {
         headers: new HttpHeaders().set("Authorization", "Bearer " + token),

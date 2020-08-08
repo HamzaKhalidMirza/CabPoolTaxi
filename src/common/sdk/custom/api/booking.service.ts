@@ -23,7 +23,7 @@ export class BookingService {
 
   public async getCurrentClientAllBookings() {
     const token = await this.authService.getTokenFromStorage();
-    const url = ClientAppConfig.getLocalPath() + `/api/v1/bookings/getCurrentClientBookings`;
+    const url = ClientAppConfig.getHostPath() + `/api/v1/bookings/getCurrentClientBookings`;
 
     return this.http.get(url, {
         headers: new HttpHeaders().set("Authorization", "Bearer " + token),
@@ -36,7 +36,7 @@ export class BookingService {
 
   public async getCurrentClientSingleBooking(credentials) {
     const token = await this.authService.getTokenFromStorage();
-    const url = ClientAppConfig.getLocalPath() + `/api/v1/bookings/${credentials.bookingId}`;
+    const url = ClientAppConfig.getHostPath() + `/api/v1/bookings/${credentials.bookingId}`;
 
     return this.http.get(url, {
         headers: new HttpHeaders().set("Authorization", "Bearer " + token),

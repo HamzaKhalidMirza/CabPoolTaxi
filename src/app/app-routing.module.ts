@@ -53,6 +53,11 @@ const routes: Routes = [
     path: 'ride-detail',
     loadChildren: () => import('./pages/appDashboard/home/filtered-rides-list/ride-detail/ride-detail.module').then( m => m.RideDetailPageModule)
   },
+  {
+    path: 'chat-room',
+    canActivate: [IsLoginGuard],
+    loadChildren: () => import('./pages/chat/chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
+  }
 ];
 
 @NgModule({

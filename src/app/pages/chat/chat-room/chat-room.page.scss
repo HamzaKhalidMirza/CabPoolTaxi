@@ -1,0 +1,130 @@
+.header {
+  .header-img {
+    width: 30px;
+    height: 30px;
+    float: left;
+
+    ion-avatar {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .title {
+    width: 80%;
+    height: 30px;
+    float: left;
+
+    ion-title {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.msg-bottom {
+  border: 1px solid var(--ion-color-primary);
+  background: var(--ion-color-primary);
+
+  .input-group {
+    margin: 10px;
+    outline: none !important;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    .form-control {
+      border-radius: 20px !important;
+    }
+    .input-group-text {
+      background: transparent !important;
+      margin-right: 20px;
+      margin-top: 8px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.chat-page {
+  padding: 0 0 10px 0;
+
+  .msg-inbox {
+    // border: 1px solid #ccc;
+    overflow: hidden;
+
+    .chats {
+      padding: 30px 5px 0 15px;
+
+      .msg-page {
+        height: 100%;
+        overflow-y: auto;
+
+        .received-chats {
+          margin-bottom: 26px;
+
+          .received-chats-img {
+            width: 20px;
+            float: left;
+  
+            ion-avatar {
+              width: 100%;
+              height: auto;
+            }
+          }
+          .received-msg {
+            display: inline-block;
+            padding: 0 0 0 10px;
+            vertical-align: top;
+            width: 92%;
+  
+            .recieved-msg-inbox {
+              width: 80%;
+            }
+            .recieved-msg-inbox p {
+              background: #efefef none repeat scroll 0 0;
+              border-radius: 10px;
+              color: #646464;
+              font-size: 14px;
+              margin: 0;
+              padding: 8px 10px 8px 12px;
+              width: 100%;
+            }
+            .time {
+              color: #777;
+              display: block;
+              font-size: 12px;
+              margin: 8px 0 0;
+            }
+          }  
+        }
+
+        .outgoing-chats {
+          overflow: hidden;
+          margin: 26px 5px;
+          margin-top: 0;
+
+          .outgoing-chats-msg {
+            float: left;
+            width: 80%;
+            margin-left: 19%;
+          }
+          .outgoing-chats-msg p {
+            background: var(--ion-color-primary) none repeat scroll 0 0;
+            color: #fff;
+            border-radius: 10px;
+            margin: 0;
+            padding: 8px 10px 8px 12px;
+            width: 100%;
+          }
+          .time {
+            color: #777;
+            display: block;
+            font-size: 12px;
+            margin: 8px 0 0;
+          }
+        }
+      }
+    }
+  }
+}

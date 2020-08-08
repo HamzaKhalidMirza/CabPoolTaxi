@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="caption-container">
-            <p class="name">{{trip?.driver?.email}}</p>
+            <p class="name">{{trip?.driver?.username}}</p>
             <p>{{trip?.trip?.vehicle?.modelName}}</p>
           </div>
           <div class="date-container">
@@ -73,15 +73,20 @@
           </div>
         </div>
       </ion-col>
-      <ion-col size="12">
-        <div class="overview-container">
-          <div class="overview">
-            <p>
-              <span class="seats">{{trip?.trip?.seatsAvailable}}-Seats</span>
-              <span class="car">{{trip?.trip?.vehicle?.ac}}</span>
-            </p>
-          </div>
-        </div>
+      <ion-col size="4" offset="1">
+        <p>
+          <span class="seats overview">{{trip?.trip?.seatsAvailable}}-Seats</span>
+        </p>
+      </ion-col>
+      <ion-col size="3">
+        <p>
+          <span class="car overview">{{trip?.trip?.vehicle?.ac}}</span>
+        </p>
+      </ion-col>
+      <ion-col size="4">
+        <p>
+          <span class="status overview">{{trip?.trip?.status}}</span>
+        </p>
       </ion-col>
     </ion-row>
   </ion-grid>

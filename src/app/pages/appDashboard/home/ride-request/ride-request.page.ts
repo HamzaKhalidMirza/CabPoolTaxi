@@ -81,6 +81,7 @@ export class RideRequestPage implements OnInit {
 
           this.seatsCounter = 1;
           this.viewNote = "";
+          await this.authService.clearFieldDataFromStorage("location-filtered-data");
           this.authService.clearFieldDataFromStorage("loadedTrip");
           this.authService.clearFieldDataFromStorage("request-data");
 
