@@ -57,6 +57,10 @@ const routes: Routes = [
     path: 'chat-room',
     canActivate: [IsLoginGuard],
     loadChildren: () => import('./pages/chat/chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
+  },
+  {
+    path: 'on-going-ride',
+    loadChildren: () => import('./pages/current-ride/on-going-ride/on-going-ride.module').then( m => m.OnGoingRidePageModule)
   }
 ];
 

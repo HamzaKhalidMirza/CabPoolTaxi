@@ -29,7 +29,6 @@ export class PasswordResetPage implements OnInit, AfterViewInit {
   password;
   confPassword;
   passwordResetSuccess: any;
-  sideMenu: any;
 
   constructor(
     private router: Router,
@@ -40,13 +39,10 @@ export class PasswordResetPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.formInitializer();
-    this.sideMenu = document.querySelector(".side-menu");
   }
   ionViewWillEnter() {
-    this.sideMenu.style.display = "none";
   }
   ionViewWillLeave() {
-    this.sideMenu.style.display = "flex";
   }
 
   formInitializer() {

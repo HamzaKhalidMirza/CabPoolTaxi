@@ -12,13 +12,69 @@
 
     <ion-tab-button tab="requests">
       <ion-icon name="notifications-outline"></ion-icon>
-      <ion-label>Requests</ion-label> 
+      <ion-label>Requests</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="account">
       <ion-icon name="person-outline"></ion-icon>
-      <ion-label>Account</ion-label> 
+      <ion-label>Account</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
 
+<div class="notification">
+  <div class="trip-started-notification" *ngIf="isTripStarted">
+    <p class="head">Trip Started</p>
+    <ion-icon
+      name="close-outline"
+      size="large"
+      color="danger"
+      class="close"
+      (click)="isTripStarted = false"
+    ></ion-icon>
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="12"
+          style="border: 1px solid #aaa; padding: 0; margin-bottom: 10px;"
+        >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" class="img-col">
+          <div class="img-container">
+            <ion-img 
+              [src]="tripStartedData?.driver.photoAvatar"
+            ></ion-img>
+          </div>
+        </ion-col>
+        <ion-col size="9">
+          <div class="content-container">
+            <p class="info">
+              <span class="caption">{{tripStartedData?.driver?.username}}</span>
+            </p>
+            <p class="location info">
+              <span class="circleFrom"></span>
+              <span class="circleFrom-back"></span>
+              <span class="caption"
+                >{{tripStartedData?.startLocation?.address}}</span
+              >
+            </p>
+            <p class="location info">
+              <span class="circleWhere"></span>
+              <span class="circleWhere-back"></span>
+              <span class="caption"
+                >{{tripStartedData?.endLocation?.address}}</span
+              >
+            </p>
+            <!-- <p class="info">Chaklala Scheme 3</p>
+            <p class="info">IIUI</p> -->
+            <!-- <p>Hamza Khalid<br>
+            Chaklala Scheme 3<br>
+            IIUI</p> -->
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

@@ -5,6 +5,8 @@ import { AppError } from "src/common/error/app-error";
 import { BadInput } from "src/common/error/bad-input";
 import { NotFoundError } from "src/common/error/not-found-error";
 import { UnAuthorized } from "src/common/error/unauthorized-error";
+import { AuthService } from 'src/common/sdk/core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rides',
@@ -17,7 +19,9 @@ export class RidesPage implements OnInit {
   relevantTrips: any = [];
   isLoading: any;
 
-  constructor(private bookingService: BookingService) {}
+  constructor(
+    private bookingService: BookingService
+    ) {}
 
   ngOnInit() {
   }

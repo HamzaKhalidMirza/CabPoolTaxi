@@ -1,3 +1,4 @@
+import { ClientTripSocket } from './../../../../common/sdk/custom/sockets/clientTripSocket.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() {}
+  isTripStarted: any = false;
+  tripStartedData: any;
 
-  async ngOnInit() {
+  constructor(
+    private clientTripSocket: ClientTripSocket
+  ) {}
+
+  ngOnInit() {}
+  async ionViewWillEnter() {
+    this.clientTripSocket.tripStarted().subscribe((data) => {
+      this.tripStartedData = data;
+      console.log("2", this.tripStartedData);
+      this.isTripStarted = true;
+      setTimeout(() => {
+        this.isTripStarted = false;
+      }, 5000);
+    });
   }
 }

@@ -1,0 +1,76 @@
+<ion-content>
+  <div class="back-btn" (click)="goBack()">
+    <ion-icon name="arrow-back-outline" color="primary" size="large"></ion-icon>
+  </div>
+  <section class="container">
+    <div class="loading-container" *ngIf="isLoading">
+      <ion-spinner
+        name="crescent"
+        color="primary"
+        class="loading"
+      ></ion-spinner>
+      <p>Loading!</p>
+    </div>
+    <div class="map-container">
+      <div class="map" #map></div>
+    </div>
+    <div class="content-container"
+      *ngIf="!isLoading">
+      <div>
+        <ion-grid>
+          <ion-row class="driver driver-container">
+            <ion-col size="2" class="img-col">
+              <ion-thumbnail class="img">
+                <ion-img
+                  [src]="loadedTrip?.driver?.photoAvatar"
+                ></ion-img>
+              </ion-thumbnail>
+            </ion-col>
+            <ion-col size="8" class="name-col">
+              <div class="name">
+                {{loadedTrip?.driver?.username}}
+              </div>
+            </ion-col>
+            <ion-col size="2" class="inbox-col">
+              <div class="inbox"
+                (click)="openChatRoom()"
+              >
+                <ion-icon
+                  size="large"
+                  color="primary"
+                  name="chatbox-ellipses-sharp"
+                ></ion-icon>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="address-container">
+                <div class="location">
+                  <p>
+                    <span class="circleFrom"></span>
+                    <span class="circleFrom-back"></span>
+                    <span class="caption">{{loadedTrip?.startLocation?.address}}</span>
+                  </p>
+                </div>
+                <div class="location">
+                  <p>
+                    <span class="circleWhere"></span>
+                    <span class="circleWhere-back"></span>
+                    <span class="caption">{{loadedTrip?.endLocation?.address}}</span>
+                  </p>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="10" offset="1" class="btn btn-action" color="primary"
+              *ngIf="arrived && !pickup && !dropoff">
+              <p>Driver arrived and is waiting<span class="blink">!</span></p>
+            </ion-col>
+            <ion-col size="10" offset="1" class="btn btn-action" color="primary"
+              *ngIf="!arrived && pickup && !dropoff">
+              <p>Towards Destination</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </section>
+</ion-content>

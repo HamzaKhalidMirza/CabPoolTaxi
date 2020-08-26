@@ -79,8 +79,32 @@
             <span class="caption">{{loadedTrip?.endLocation?.address}}</span>
           </p>
         </div>
+        <div
+          class="container location-container"
+          *ngIf="loadedTrip?.stops.length > 0"
+        >
+          <h4>Stops</h4>
+          <p class="location" *ngFor="let stop of loadedTrip.stops">
+            <span class="circleStop"></span>
+            <span class="circleStop-back"></span>
+            <span class="caption">{{stop?.location?.address}}</span>
+          </p>
+        </div>
       </ion-card-content>
     </ion-card>
+        
+    <ion-grid *ngIf="loadedTrip?.status === 'current'">
+      <ion-row>
+        <ion-col size="12">
+          <ion-button
+            expand="block"
+            style="height: 50px; margin: 0;"
+            (click)="startRide()"
+            >Track Ride</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
   <div class="section-booking" *ngIf="!isLoading && bookingTrips.length > 0">

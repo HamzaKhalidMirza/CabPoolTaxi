@@ -1,0 +1,26 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+}
+
+p {
+  font-family: Lato;
+}
+
+div[scrollx=true], div[scrolly=true] {
+  position: relative;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+div[scrollx=true] {
+  overflow-x: auto;
+}
+div[scrolly=true] {
+  overflow-y: auto;
+}

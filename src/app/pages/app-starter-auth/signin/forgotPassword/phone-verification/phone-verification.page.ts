@@ -22,7 +22,6 @@ export class PhoneVerificationPage implements OnInit, AfterViewInit {
   clientObj: any;
   phoneNumber: any;
   code;
-  sideMenu: any;
 
   constructor(
     private router: Router,
@@ -33,13 +32,10 @@ export class PhoneVerificationPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.formInitializer();
-    this.sideMenu = document.querySelector(".side-menu");
   }
   ionViewWillEnter() {
-    this.sideMenu.style.display = "none";
   }
   ionViewWillLeave() {
-    this.sideMenu.style.display = "flex";
   }
 
   formInitializer() {

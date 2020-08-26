@@ -177,6 +177,12 @@ export class RideDetailPage implements OnInit {
       });
   }
 
+  async startRide() {
+    await this.authService.clearFieldDataFromStorage('on-going-trip');
+    await this.authService.setFieldDataToStorage('on-going-trip', this.loadedTrip);
+    this.router.navigateByUrl('/on-going-ride');
+  }
+
   async openChatRoom(trip) {
 
     await this.authService.clearFieldDataFromStorage('chat-driverData');

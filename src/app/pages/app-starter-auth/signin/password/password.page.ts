@@ -20,7 +20,6 @@ export class PasswordPage implements OnInit, AfterViewInit {
   loginForm: FormGroup;
   driverObj: any;
   password;
-  sideMenu: any;
 
   constructor(
     private router: Router,
@@ -31,13 +30,10 @@ export class PasswordPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.formInitializer();
-    this.sideMenu = document.querySelector(".side-menu");
   }
   ionViewWillEnter() {
-    this.sideMenu.style.display = "none";
   }
   ionViewWillLeave() {
-    this.sideMenu.style.display = "flex";
   }
 
   formInitializer() {
