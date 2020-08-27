@@ -7,5 +7,6 @@ export interface ChatMessage {
     message: string;
     driver: string;
     client: string;
+    createdAt: Date;
   }
   

@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: RideDetailPage
+  },
+  {
+    path: 'report-admin',
+    loadChildren: () => import('./report-admin/report-admin.module').then( m => m.ReportAdminPageModule)
   }
 ];
 

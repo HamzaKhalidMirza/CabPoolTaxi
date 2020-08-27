@@ -9,7 +9,24 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
+
+  <ion-list>
+    <a [routerLink]="['/','help','general-topics']">
+      <ion-item>
+        <ion-label>General Topics</ion-label>
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>  
+    </a>
+    <ion-item lines="none" class="history-heading">
+      <ion-label>Help History</ion-label>
+    </ion-item>        
+    <a>
+      <ion-item>
+        <ion-label>View All Messages</ion-label>
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>        
+    </a>
+  </ion-list>
 
 </ion-content>

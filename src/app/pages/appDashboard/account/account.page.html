@@ -1,9 +1,98 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Account</ion-title>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color: var(--ion-color-primary);">Account</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-margin-top">
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <div class="picker">
+          <ion-avatar>
+            <ion-img
+              role="button"
+              class="image"
+              [src]="currentUser?.photoAvatar"
+            ></ion-img>
+          </ion-avatar>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="info">
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <p class="start-para">First Name</p>
+      </ion-col>
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <ion-item lines="none">
+          <h2>{{currentUser?.fName}}</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="info">
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <p class="start-para">Sur Name</p>
+      </ion-col>
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <ion-item lines="none">
+          <h2>{{currentUser?.lName}}</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="info">
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <p class="start-para">Gender</p>
+      </ion-col>
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <ion-item lines="none">
+          <h2>{{currentUser?.gender | uppercase}}</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="info">
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <p class="start-para">DOB</p>
+      </ion-col>
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <ion-item lines="none">
+          <h2>{{setDOB(currentUser?.dob)}}</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="info">
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <p class="start-para">Username</p>
+      </ion-col>
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <ion-item lines="none">
+          <h2>{{currentUser?.username}}</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="info">
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <p class="start-para">Phone Number</p>
+      </ion-col>
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <ion-item lines="none">
+          <h2>{{currentUser?.countryCode}}{{currentUser?.phone}}</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="info">
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <p class="start-para">Email</p>
+      </ion-col>
+      <ion-col size="12" size-sm="6" offset-sm="3">
+        <ion-item lines="none">
+          <h2>{{currentUser?.email}}</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

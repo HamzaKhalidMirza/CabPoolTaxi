@@ -77,6 +77,19 @@
         </div>
       </ion-card-content>
     </ion-card>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button
+            expand="block"
+            style="height: 50px; margin: 0;"
+            (click)="reportAdmin()"
+            >Report Admin</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
   <div class="section-booking" *ngIf="!isLoading && bookingTrips.length > 0">

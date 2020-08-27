@@ -22,11 +22,6 @@ export class AppComponent implements OnInit {
       title: 'Wallet',
       url: '/wallet',
       icon: 'cash'
-    },
-    {
-      title: 'Get discounts',
-      url: '/discount',
-      icon: 'shield-checkmark'
     }
   ];
   public appAccountPages = [
@@ -69,8 +64,10 @@ export class AppComponent implements OnInit {
     });
   }
 
-  async ngOnInit() {
-    this.currentUser = await this.authService.getCurrentUser();
+  ngOnInit() {
+    setInterval(async () => {
+      this.currentUser = await this.authService.getCurrentUser();
+    }, 1000);
   }
 
   logout(page) {

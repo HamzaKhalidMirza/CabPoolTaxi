@@ -1,4 +1,5 @@
-import { ActivatedRoute } from "@angular/router";
+import { AuthService } from './../../../../../common/sdk/core/auth.service';
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   Component,
   OnInit,
@@ -35,7 +36,9 @@ export class RideDetailPage implements OnInit {
     private tripService: TripService,
     private renderer: Renderer2,
     private baseMapService: BaseMapService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -183,5 +186,10 @@ export class RideDetailPage implements OnInit {
   getTripDate(dateStr) {
     var time = new Date(dateStr);
     return format(time, "dd-MM-yyyy");
+  }
+  
+  async reportAdmin() {
+    await this.authService.setFieldDataToStorage('report-loadedTrip', this.loadedTrip);
+    this.router.navigateByUrl(`/rides/${this.loadedTrip.id}/report-admin`);
   }
 }

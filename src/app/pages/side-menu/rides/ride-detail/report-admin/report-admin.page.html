@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Report Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="scrollX">
+    <form [formGroup]="form">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Subject</ion-label>
+              <ion-input
+               formControlName="subject"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Report Message</ion-label>
+              <ion-textarea rows="10"
+                formControlName="message"
+              ></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="formSubmit && form.invalid">
+          <ion-col>
+            <ion-item lines="none">
+              <p style="color: var(--ion-color-danger);">Please fill the details please.</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="formSubmit && success">
+          <ion-col>
+            <ion-item lines="none">
+              <p style="color: var(--ion-color-success);">Report created successfully.</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row style="position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 1;">
+          <ion-col>
+            <ion-button expand="full" style="height: 50px;"
+              (click)="reportAdmin()"
+            >
+            <span *ngIf="!isLoading">Report</span>
+            <span *ngIf="isLoading">
+              <ion-spinner size='large' color="light"></ion-spinner>
+            </span>
+          </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>    
+    </form>
+  </div>
+</ion-content>

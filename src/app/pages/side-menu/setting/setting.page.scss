@@ -1,0 +1,26 @@
+ion-list {
+    a {
+        text-decoration: none;
+    }
+    ion-item {
+        border-bottom: 1px solid #ccc;
+    }
+    ion-label {
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+    h2 {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    p {
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+    .info h2, .language p {
+        margin-bottom: 5;
+    }
+    .info p, .language h2 {
+        margin-top: 5px;
+    }
+}

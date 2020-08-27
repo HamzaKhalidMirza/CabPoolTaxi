@@ -131,4 +131,21 @@ export class ClientTripSocket {
     return obs;
   }
 
+  reportAdmin(data): Observable<any> {
+    this.socket.emit("reportAdmin", data);
+
+    const obs = Observable.create((observable) => {
+      this.authService.getTokenFromStorage().then((token) => {
+        const decodedToken = this.authService.getDecodedAccessToken(token);
+
+        const event = decodedToken.id + "-adminReported";
+
+        this.socket.on(event, (data) => {
+          observable.next(data);
+        });
+      });
+    });
+
+    return obs;
+  }
 }

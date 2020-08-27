@@ -9,7 +9,53 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
+
+  <ion-list>
+    <a>
+      <ion-item lines="none" class="safety">
+        <ion-icon size="large" slot="start" name="people" color="primary"></ion-icon>
+        <div class="info">
+          <h2>Manage your trusted contacts</h2>
+          <p>Share your trip status with friends and family in a single trip</p>
+        </div>
+      </ion-item>        
+    </a>
+    <a [routerLink]="['/','setting','account-setting']">
+      <ion-item lines="none">
+        <div class="language">
+          <ion-label>Account Settings</ion-label>
+        </div>
+        <ion-icon slot="end" name="chevron-forward-outline" color="primary"></ion-icon>
+      </ion-item>
+    </a>
+    <a>
+      <ion-item lines="none">
+        <ion-label>Privacy Settings</ion-label>
+        <ion-icon slot="end" name="chevron-forward-outline" color="primary"></ion-icon>
+      </ion-item>        
+    </a>
+    <a>
+      <ion-item lines="none">
+        <ion-label>Security</ion-label>
+        <ion-icon slot="end" name="chevron-forward-outline" color="primary"></ion-icon>
+      </ion-item>        
+    </a>
+    <a>
+      <ion-item lines="none">
+        <div class="language">
+          <p>Language</p>
+          <h2>English</h2>
+        </div>
+        <ion-icon slot="end" name="chevron-forward-outline" color="primary"></ion-icon>
+      </ion-item>        
+    </a>
+    <a (click)="logout()">
+      <ion-item lines="none">
+        <ion-label>Sign out</ion-label>
+        <ion-icon slot="end" name="log-out-outline" color="primary"></ion-icon>
+      </ion-item>
+    </a>
+  </ion-list>
 
 </ion-content>

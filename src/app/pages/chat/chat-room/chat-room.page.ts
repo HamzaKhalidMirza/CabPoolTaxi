@@ -37,8 +37,7 @@ export class ChatRoomPage implements OnInit {
   }
 
   async ionViewWillEnter() {
-    const token = await this.authService.getTokenFromStorage();
-    this.clientData = await this.authService.getDecodedAccessToken(token).user;
+    this.clientData = await this.authService.getCurrentUser();
     this.driverData = await this.authService.getFieldDataFromStorage(
       "chat-driverData"
     );
@@ -59,12 +58,13 @@ export class ChatRoomPage implements OnInit {
         }
       );
 
-      this.chatSocketService
+      const receiveObs = this.chatSocketService
       .receivedMessage()
       .subscribe(
         (chatMessage) => {
           this.chatMessagesList.push(chatMessage);
           this.ionContent.scrollToBottom(300);
+          receiveObs.unsubscribe();
         },
         (err) => {
           console.log(err);
@@ -92,12 +92,14 @@ export class ChatRoomPage implements OnInit {
       message: this.chatForm.value.message,
       driver: this.driverData.id,
       client: this.clientData.id,
+      createdAt: new Date()
     };
 
-    this.chatSocketService.sendMessage(chatData).subscribe(
+    const sendObs = this.chatSocketService.sendMessage(chatData).subscribe(
       (chatMessage) => {
         this.chatMessagesList.push(chatMessage);
         this.ionContent.scrollToBottom(300);
+        sendObs.unsubscribe();
       },
       (err) => {
         console.log(err);

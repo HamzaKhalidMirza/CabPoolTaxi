@@ -30,11 +30,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/side-menu/wallet/wallet.module').then( m => m.WalletPageModule)
   },
   {
-    path: 'discount',
-    canActivate: [IsLoginGuard],
-    loadChildren: () => import('./pages/side-menu/discount/discount.module').then( m => m.DiscountPageModule)
-  },
-  {
     path: 'legal',
     canActivate: [IsLoginGuard],
     loadChildren: () => import('./pages/side-menu/legal/legal.module').then( m => m.LegalPageModule)

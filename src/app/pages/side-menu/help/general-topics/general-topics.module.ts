@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DiscountPageRoutingModule } from './discount-routing.module';
+import { GeneralTopicsPageRoutingModule } from './general-topics-routing.module';
 
-import { DiscountPage } from './discount.page';
+import { GeneralTopicsPage } from './general-topics.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DiscountPageRoutingModule
+    GeneralTopicsPageRoutingModule
   ],
-  declarations: [DiscountPage]
+  declarations: [GeneralTopicsPage]
 })
-export class DiscountPageModule {}
+export class GeneralTopicsPageModule {}

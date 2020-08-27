@@ -16,8 +16,15 @@ import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppErrorHandler } from './../common/error/app-error-handler';
 import { SharedModule } from './pages/appDashboard/shared/shared.module';
+import { AngularFireModule } from "@angular/fire";
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask
+} from "@angular/fire/storage";
 
 import { NgIoModule, NgIoConfig } from 'ng-io';
+import { environment } from 'src/environments/environment';
 const config: NgIoConfig = { url: ClientAppConfig.getLocalPath(), options: {} };
 
 @NgModule({
@@ -35,7 +42,9 @@ const config: NgIoConfig = { url: ClientAppConfig.getLocalPath(), options: {} };
     FormsModule,
     ReactiveFormsModule,
     NgIoModule.forRoot(config),
-    SharedModule
+    SharedModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
     StatusBar,
