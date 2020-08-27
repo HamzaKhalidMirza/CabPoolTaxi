@@ -25,7 +25,7 @@ import {
 
 import { NgIoModule, NgIoConfig } from 'ng-io';
 import { environment } from 'src/environments/environment';
-const config: NgIoConfig = { url: ClientAppConfig.getLocalPath(), options: {} };
+const config: NgIoConfig = { url: ClientAppConfig.getHostPath(), options: {} };
 
 @NgModule({
   declarations: [
