@@ -16,8 +16,11 @@ export class AccountPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+  }
+
+  async ionViewWillEnter() {
     this.currentUser = await this.authService.getCurrentUser();
-    console.log(this.currentUser);
+    console.log(this.currentUser);    
   }
 
   setDOB(dateStr) {
