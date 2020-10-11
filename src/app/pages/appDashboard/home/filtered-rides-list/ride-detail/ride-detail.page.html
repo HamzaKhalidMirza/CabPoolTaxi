@@ -48,6 +48,9 @@
         <p>
           Seats Available: <strong>{{ loadedTrip?.seatsAvailable }}</strong>
         </p>
+        <p>
+          Vehicle Reg#: <strong>{{ loadedTrip?.vehicle?.registrationNo }}</strong>
+        </p>
         <p
           *ngIf="loadedTrip?.description"
           style="

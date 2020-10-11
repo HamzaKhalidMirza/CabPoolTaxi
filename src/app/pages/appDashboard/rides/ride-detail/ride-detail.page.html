@@ -6,6 +6,7 @@
       </ion-button>
     </ion-buttons>
     <ion-button color="primary" slot="end" class="chat-btn"
+      *ngIf="loadedTrip"
       (click)="openChatRoom(loadedTrip)">
       <ion-icon name="chatbox-ellipses-sharp"></ion-icon>
     </ion-button>
@@ -50,6 +51,9 @@
         </p>
         <p>Total Seats: <strong>{{ loadedTrip?.totalSeats }}</strong></p>
         <p>Seats Available: <strong>{{ loadedTrip?.seatsAvailable }}</strong></p>
+        <p>
+          Vehicle Reg#: <strong>{{ loadedTrip?.vehicle?.registrationNo }}</strong>
+        </p>
         <p
           *ngIf="loadedTrip?.description"
           style="

@@ -66,6 +66,7 @@
           class="form-control"
           placeholder="Write message here..."
           formControlName="message"
+          (keyup.enter)="sendMessage()"
         ></ion-input>
         <span class="input-group-text" (click)="sendMessage()">
           <ion-icon name="navigate-sharp" color="primary"></ion-icon>

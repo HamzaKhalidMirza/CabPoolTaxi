@@ -15,12 +15,18 @@ export class AccountPage implements OnInit {
     private authService: AuthService
   ) { }
 
-  async ngOnInit() {
+  ngOnInit() {
+  }
+
+  async ionViewWillEnter() {
     this.currentUser = await this.authService.getCurrentUser();
     console.log(this.currentUser);
   }
 
   setDOB(dateStr) {
+    if(!dateStr) {
+      return '';
+    }
     let date = new Date(dateStr);
     return format(date, "LLL dd, yyyy");
   }

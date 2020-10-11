@@ -63,9 +63,14 @@
             </p>
           </div>
           <div class="location">
-            <p style="font-weight: 600; margin-bottom: 0;">
+            <p style="font-weight: 600;">
               {{ getTripDayName(trip?.trip?.startDate, "en-US") }} at 
               {{ getTripTime(trip?.trip?.startTime) }}
+            </p>
+          </div>
+          <div class="location" style="margin-top: 10px;">
+            <p>
+              Vehicle Reg#: <strong>{{ trip?.trip?.vehicle?.registrationNo }}</strong>
             </p>
           </div>
         </div>

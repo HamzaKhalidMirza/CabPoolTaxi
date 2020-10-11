@@ -19,16 +19,24 @@ export class FirebaseImageHandler {
   ) {}
 
   public async uploadProfileImg(credentials, folder) {
-    const token = await this.authService.getTokenFromStorage();
-    const decodedToken = this.authService.getDecodedAccessToken(token);
 
-    const uploadObs = this.uploadFileAndGetMetadata(
-      credentials.photoAvatar,
-      decodedToken.user.id,
-      folder
-    );
-
-    return uploadObs.downloadUrl$;
+    if(credentials.photoAvatar instanceof File || credentials.photoAvatar instanceof Blob) {
+      const token = await this.authService.getTokenFromStorage();
+      const decodedToken = this.authService.getDecodedAccessToken(token);
+  
+      const uploadObs = this.uploadFileAndGetMetadata(
+        credentials.photoAvatar,
+        decodedToken.user.id,
+        folder
+      );
+  
+      return uploadObs.downloadUrl$;  
+    } else {
+      const obs = Observable.create(obs => {
+        obs.next(credentials.photoAvatar);
+      });
+      return obs;
+    }
   }
 
   uploadFileAndGetMetadata(fileToUpload: File, userId, folder) {
