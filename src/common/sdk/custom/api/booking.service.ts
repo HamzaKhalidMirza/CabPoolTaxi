@@ -24,9 +24,13 @@ export class BookingService {
   public async getCurrentClientAllBookings() {
     const token = await this.authService.getTokenFromStorage();
     const url = ClientAppConfig.getHostPath() + `/api/v1/bookings/getCurrentClientBookings`;
-
+  
     return this.http.get(url, {
-        headers: new HttpHeaders().set("Authorization", "Bearer " + token),
+        headers: new HttpHeaders()
+        .set("Authorization", "Bearer " + token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .set('Access-Control-Allow-Credentials', 'true')
       })
     .pipe(
       map((response: Response) => response),
